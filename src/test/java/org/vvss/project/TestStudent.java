@@ -62,6 +62,18 @@ public class TestStudent {
     }
 
     @Test(expected = ValidationException.class)
+    public void testAddStudentIdNegative() {
+        String id = "-1";
+        String nume = "Nume";
+        int gr = 931;
+        String em = "a@scs.ubbcluj.com";
+        String prof = "teacher";
+        Student stud = new Student(id, nume, gr, em, prof);
+        assertNull(serviceStudent.find(id));
+        serviceStudent.add(stud);
+    }
+
+    @Test(expected = ValidationException.class)
     public void testAddStudentIdNaN() {
         String id = "not number";
         String nume = "Nume";
@@ -85,7 +97,7 @@ public class TestStudent {
         serviceStudent.add(stud);
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = ValidationException.class)
     public void testAddStudentNameNull() {
         String id = "15";
         int gr = 931;
@@ -109,6 +121,18 @@ public class TestStudent {
     }
 
     @Test(expected = ValidationException.class)
+    public void testAddStudentGroupInvalid() {
+        String id = "15";
+        String nume = "Nume";
+        int gr = 100;
+        String em = "a@scs.ubbcluj.com";
+        String prof = "teacher";
+        Student stud = new Student(id, nume, gr, em, prof);
+        assertNull(serviceStudent.find(id));
+        serviceStudent.add(stud);
+    }
+
+    @Test(expected = ValidationException.class)
     public void addStudentEmailInvalid() {
         String id = "15";
         String nume = "Nume";
@@ -120,13 +144,25 @@ public class TestStudent {
         serviceStudent.add(stud);
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = ValidationException.class)
     public void addStudentEmailNull() {
         String id = "15";
         String nume = "Nume";
         int gr = 931;
         String prof = "teacher";
         Student stud = new Student(id, nume, gr, null, prof);
+        assertNull(serviceStudent.find(id));
+        serviceStudent.add(stud);
+    }
+
+    @Test(expected = ValidationException.class)
+    public void testAddStudentEmailEmpty() {
+        String id = "15";
+        String nume = "Nume";
+        int gr = 931;
+        String em = "";
+        String prof = "teacher";
+        Student stud = new Student(id, nume, gr, em, prof);
         assertNull(serviceStudent.find(id));
         serviceStudent.add(stud);
     }
@@ -143,7 +179,7 @@ public class TestStudent {
         serviceStudent.add(stud);
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = ValidationException.class)
     public void addStudentProfessorNull() {
         String id = "15";
         String nume = "Nume";
