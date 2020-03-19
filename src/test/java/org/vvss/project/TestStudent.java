@@ -32,7 +32,7 @@ public class TestStudent {
         String nume = "Nume";
         int gr = 931;
         String em = "a@scs.ubbcluj.com";
-        String prof = "teacher";
+        String prof = "Teacher";
         Student stud = new Student(id, nume, gr, em, prof);
         assertNull(serviceStudent.find(id));
         serviceStudent.add(stud);
@@ -44,7 +44,7 @@ public class TestStudent {
         String nume = "Nume";
         int gr = 931;
         String em = "a@scs.ubbcluj.com";
-        String prof = "teacher";
+        String prof = "Teacher";
         Student stud = new Student(null, nume, gr, em, prof);
         serviceStudent.add(stud);
     }
@@ -55,7 +55,7 @@ public class TestStudent {
         String nume = "Nume";
         int gr = 931;
         String em = "a@scs.ubbcluj.com";
-        String prof = "teacher";
+        String prof = "Teacher";
         Student stud = new Student(id, nume, gr, em, prof);
         assertNull(serviceStudent.find(id));
         serviceStudent.add(stud);
@@ -67,7 +67,7 @@ public class TestStudent {
         String nume = "Nume";
         int gr = 931;
         String em = "a@scs.ubbcluj.com";
-        String prof = "teacher";
+        String prof = "Teacher";
         Student stud = new Student(id, nume, gr, em, prof);
         assertNull(serviceStudent.find(id));
         serviceStudent.add(stud);
@@ -79,7 +79,7 @@ public class TestStudent {
         String nume = "Nume";
         int gr = 931;
         String em = "a@scs.ubbcluj.com";
-        String prof = "teacher";
+        String prof = "Teacher";
         Student stud = new Student(id, nume, gr, em, prof);
         assertNull(serviceStudent.find(id));
         serviceStudent.add(stud);
@@ -91,18 +91,18 @@ public class TestStudent {
         String nume = ":)";
         int gr = 931;
         String em = "a@scs.ubbcluj.com";
-        String prof = "teacher";
+        String prof = "Teacher";
         Student stud = new Student(id, nume, gr, em, prof);
         assertNull(serviceStudent.find(id));
         serviceStudent.add(stud);
     }
 
-    @Test(expected = ValidationException.class)
+    @Test(expected = NullPointerException.class)
     public void testAddStudentNameNull() {
         String id = "15";
         int gr = 931;
         String em = "a@scs.ubbcluj.com";
-        String prof = "teacher";
+        String prof = "Teacher";
         Student stud = new Student(id, null, gr, em, prof);
         assertNull(serviceStudent.find(id));
         serviceStudent.add(stud);
@@ -114,7 +114,7 @@ public class TestStudent {
         String nume = "Nume";
         int gr = -10;
         String em = "a@scs.ubbcluj.com";
-        String prof = "teacher";
+        String prof = "Teacher";
         Student stud = new Student(id, nume, gr, em, prof);
         assertNull(serviceStudent.find(id));
         serviceStudent.add(stud);
@@ -126,7 +126,7 @@ public class TestStudent {
         String nume = "Nume";
         int gr = 100;
         String em = "a@scs.ubbcluj.com";
-        String prof = "teacher";
+        String prof = "Teacher";
         Student stud = new Student(id, nume, gr, em, prof);
         assertNull(serviceStudent.find(id));
         serviceStudent.add(stud);
@@ -138,18 +138,18 @@ public class TestStudent {
         String nume = "Nume";
         int gr = 931;
         String em = "this email is not valid";
-        String prof = "teacher";
+        String prof = "Teacher";
         Student stud = new Student(id, nume, gr, em, prof);
         assertNull(serviceStudent.find(id));
         serviceStudent.add(stud);
     }
 
-    @Test(expected = ValidationException.class)
+    @Test(expected = NullPointerException.class)
     public void addStudentEmailNull() {
         String id = "15";
         String nume = "Nume";
         int gr = 931;
-        String prof = "teacher";
+        String prof = "Teacher";
         Student stud = new Student(id, nume, gr, null, prof);
         assertNull(serviceStudent.find(id));
         serviceStudent.add(stud);
@@ -161,7 +161,7 @@ public class TestStudent {
         String nume = "Nume";
         int gr = 931;
         String em = "";
-        String prof = "teacher";
+        String prof = "Teacher";
         Student stud = new Student(id, nume, gr, em, prof);
         assertNull(serviceStudent.find(id));
         serviceStudent.add(stud);
@@ -179,7 +179,7 @@ public class TestStudent {
         serviceStudent.add(stud);
     }
 
-    @Test(expected = ValidationException.class)
+    @Test(expected = NullPointerException.class)
     public void addStudentProfessorNull() {
         String id = "15";
         String nume = "Nume";
