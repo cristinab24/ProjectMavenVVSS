@@ -23,9 +23,6 @@ public class AppTest
         serviceStudent = new ServiceStudent(rep);
     }
 
-    /**
-     * Rigorous Test :-)
-     */
     @Test
     public void shouldAnswerWithTrue()
     {
