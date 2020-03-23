@@ -1,5 +1,6 @@
 package org.vvss.project;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.vvss.project.Domain.Student;
@@ -7,6 +8,10 @@ import org.vvss.project.Repository.StudentRepo;
 import org.vvss.project.Service.ServiceStudent;
 import org.vvss.project.Validator.StudentValidator;
 import org.vvss.project.Validator.ValidationException;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertNull;
@@ -25,7 +30,7 @@ public class TestStudentWBT {
     @Test
     public void testAddStudent()
     {
-        String id = "15";
+        String id = "17";
         String nume = "Nume";
         int gr = 931;
         String em = "a@scs.ubbcluj.com";
@@ -54,5 +59,13 @@ public class TestStudentWBT {
         }
         assertNull(serviceStudent.find(id));
         assertNull(repo.findOne(id));
+    }
+
+    @After
+    public void clearTests() {
+        Iterator<Student> studentIterator = serviceStudent.all().iterator();
+        List<Student> studentList = new ArrayList<>();
+        studentIterator.forEachRemaining(studentList::add);
+        studentList.forEach(student -> serviceStudent.del(student.getID()));
     }
 }
