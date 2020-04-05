@@ -7,12 +7,14 @@ import org.vvss.project.Domain.Teme;
 import org.vvss.project.Repository.TemeRepo;
 import org.vvss.project.Service.ServiceTeme;
 import org.vvss.project.Validator.TemeValidator;
+import org.vvss.project.Validator.ValidationException;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 public class TestAddAssignment {
 
@@ -25,43 +27,92 @@ public class TestAddAssignment {
     }
 
     @Test
-    public void testAssignmentIdNull(){
-
+    public void testAssignmentValid() {
+        Integer id = 1;
+        String description = "Do something";
+        Integer deadlineWeek = 4;
+        Integer deliverWeek = 3;
+        Teme t = new Teme(id, description, deliverWeek, deadlineWeek);
+        assertNull(serviceTeme.find(id));
+        serviceTeme.add(t);
+        assertNotNull(serviceTeme.find(id));
     }
 
-    @Test
-    public void testAssignmentIdEmpty(){
-
+    @Test(expected = ValidationException.class)
+    public void testAssignmentIdNull() {
+        Integer id = null;
+        String description = "Do something";
+        Integer deadlineWeek = 4;
+        Integer deliverWeek = 3;
+        Teme t = new Teme(id, description, deliverWeek, deadlineWeek);
+        assertNull(serviceTeme.find(id));
+        serviceTeme.add(t);
     }
 
-    @Test
-    public void testAssignmentIdSmallerThan1(){
-
+    @Test(expected = ValidationException.class)
+    public void testAssignmentIdSmallerThan1() {
+        Integer id = -1;
+        String description = "Do something";
+        Integer deadlineWeek = 4;
+        Integer deliverWeek = 3;
+        Teme t = new Teme(id, description, deliverWeek, deadlineWeek);
+        assertNull(serviceTeme.find(id));
+        serviceTeme.add(t);
     }
 
-    @Test
-    public void testDeadlineWeekBiggerThan14(){
-
+    @Test(expected = ValidationException.class)
+    public void testDeadlineWeekBiggerThan14() {
+        Integer id = 2;
+        String description = "Do something";
+        Integer deadlineWeek = 15;
+        Integer deliverWeek = 3;
+        Teme t = new Teme(id, description, deliverWeek, deadlineWeek);
+        assertNull(serviceTeme.find(id));
+        serviceTeme.add(t);
     }
 
-    @Test
-    public void testDeadlineWeekSmallerThan1(){
-
+    @Test(expected = ValidationException.class)
+    public void testDeadlineWeekSmallerThan1() {
+        Integer id = 2;
+        String description = "Do something";
+        Integer deadlineWeek = -1;
+        Integer deliverWeek = 3;
+        Teme t = new Teme(id, description, deliverWeek, deadlineWeek);
+        assertNull(serviceTeme.find(id));
+        serviceTeme.add(t);
     }
 
-    @Test
-    public void testDeadlineWeekSmallerThanDeliverWeek(){
-
+    @Test(expected = ValidationException.class)
+    public void testDeadlineWeekSmallerThanDeliverWeek() {
+        Integer id = 2;
+        String description = "Do something";
+        Integer deadlineWeek = 4;
+        Integer deliverWeek = 13;
+        Teme t = new Teme(id, description, deliverWeek, deadlineWeek);
+        assertNull(serviceTeme.find(id));
+        serviceTeme.add(t);
     }
 
-    @Test
-    public void testDeliverWeekBiggerThan14(){
-
+    @Test(expected = ValidationException.class)
+    public void testDeliverWeekBiggerThan14() {
+        Integer id = 2;
+        String description = "Do something";
+        Integer deadlineWeek = 4;
+        Integer deliverWeek = 15;
+        Teme t = new Teme(id, description, deliverWeek, deadlineWeek);
+        assertNull(serviceTeme.find(id));
+        serviceTeme.add(t);
     }
 
-    @Test
-    public void testDeliverWeekSmallerThan1(){
-
+    @Test(expected = ValidationException.class)
+    public void testDeliverWeekSmallerThan1() {
+        Integer id = 1;
+        String description = "Do something";
+        Integer deadlineWeek = 4;
+        Integer deliverWeek = -1;
+        Teme t = new Teme(id, description, deliverWeek, deadlineWeek);
+        assertNull(serviceTeme.find(id));
+        serviceTeme.add(t);
     }
 
     @After
