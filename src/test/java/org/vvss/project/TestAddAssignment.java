@@ -115,6 +115,26 @@ public class TestAddAssignment {
         serviceTeme.add(t);
     }
 
+    @Test(expected = ValidationException.class)
+    public void testDescriptionNull() {
+        Integer id = 1;
+        Integer deadlineWeek = 4;
+        Integer deliverWeek = 1;
+        Teme t = new Teme(id, null, deliverWeek, deadlineWeek);
+        assertNull(serviceTeme.find(id));
+        serviceTeme.add(t);
+    }
+
+    @Test(expected = ValidationException.class)
+    public void testEmptyDescription() {
+        Integer id = 1;
+        String description = "";
+        Integer deadlineWeek = 4;
+        Integer deliverWeek = 1;
+        Teme t = new Teme(id, description, deliverWeek, deadlineWeek);
+        assertNull(serviceTeme.find(id));
+        serviceTeme.add(t);
+    }
     @After
     public void clearTests() {
         Iterator<Teme> iterator = serviceTeme.all().iterator();
