@@ -135,50 +135,50 @@ public class TestAddAssignment {
         assertNull(serviceTeme.find(id));
         serviceTeme.add(t);
     }
-
-    @Test(expected = ValidationException.class)
-    public void testIdDeadlineInvalid() {
-        Integer id = null;
-        String description = "Do smth";
-        Integer deadlineWeek = -4;
-        Integer deliverWeek = 1;
-        Teme t = new Teme(id, description, deliverWeek, deadlineWeek);
-        assertNull(serviceTeme.find(id));
-        serviceTeme.add(t);
-    }
-
-    @Test(expected = ValidationException.class)
-    public void testIdDeliverInvalid() {
-        Integer id = null;
-        String description = "Do smth";
-        Integer deadlineWeek = 4;
-        Integer deliverWeek = -1;
-        Teme t = new Teme(id, description, deliverWeek, deadlineWeek);
-        assertNull(serviceTeme.find(id));
-        serviceTeme.add(t);
-    }
-
-    @Test(expected = ValidationException.class)
-    public void testDeadlineDeliverInvalid() {
-        Integer id = 1;
-        String description = "Do smth";
-        Integer deadlineWeek = -4;
-        Integer deliverWeek = -1;
-        Teme t = new Teme(id, description, deliverWeek, deadlineWeek);
-        assertNull(serviceTeme.find(id));
-        serviceTeme.add(t);
-    }
-
-    @Test(expected = ValidationException.class)
-    public void testAllInvalid() {
-        Integer id = null;
-        String description = "";
-        Integer deadlineWeek = -4;
-        Integer deliverWeek = -1;
-        Teme t = new Teme(id, description, deliverWeek, deadlineWeek);
-        assertNull(serviceTeme.find(id));
-        serviceTeme.add(t);
-    }
+//
+//    @Test(expected = ValidationException.class)
+//    public void testIdDeadlineInvalid() {
+//        Integer id = null;
+//        String description = "Do smth";
+//        Integer deadlineWeek = -4;
+//        Integer deliverWeek = 1;
+//        Teme t = new Teme(id, description, deliverWeek, deadlineWeek);
+//        assertNull(serviceTeme.find(id));
+//        serviceTeme.add(t);
+//    }
+//
+//    @Test(expected = ValidationException.class)
+//    public void testIdDeliverInvalid() {
+//        Integer id = null;
+//        String description = "Do smth";
+//        Integer deadlineWeek = 4;
+//        Integer deliverWeek = -1;
+//        Teme t = new Teme(id, description, deliverWeek, deadlineWeek);
+//        assertNull(serviceTeme.find(id));
+//        serviceTeme.add(t);
+//    }
+//
+//    @Test(expected = ValidationException.class)
+//    public void testDeadlineDeliverInvalid() {
+//        Integer id = 1;
+//        String description = "Do smth";
+//        Integer deadlineWeek = -4;
+//        Integer deliverWeek = -1;
+//        Teme t = new Teme(id, description, deliverWeek, deadlineWeek);
+//        assertNull(serviceTeme.find(id));
+//        serviceTeme.add(t);
+//    }
+//
+//    @Test(expected = ValidationException.class)
+//    public void testAllInvalid() {
+//        Integer id = null;
+//        String description = "";
+//        Integer deadlineWeek = -4;
+//        Integer deliverWeek = -1;
+//        Teme t = new Teme(id, description, deliverWeek, deadlineWeek);
+//        assertNull(serviceTeme.find(id));
+//        serviceTeme.add(t);
+//    }
 
     @After
     public void clearTests() {
