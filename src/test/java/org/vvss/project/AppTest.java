@@ -1,5 +1,6 @@
 package org.vvss.project;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.vvss.project.Domain.Student;
@@ -7,6 +8,10 @@ import org.vvss.project.Repository.StudentRepo;
 import org.vvss.project.Service.ServiceStudent;
 import org.vvss.project.Validator.StudentValidator;
 import org.vvss.project.Validator.ValidationException;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -59,5 +64,13 @@ public class AppTest
             assertEquals("\nID invalid",ex.getMessage());
         }
         assertNull(serviceStudent.find(id));
+    }
+
+    @After
+    public void clearTests() {
+        Iterator<Student> studentIterator = serviceStudent.all().iterator();
+        List<Student> studentList = new ArrayList<>();
+        studentIterator.forEachRemaining(studentList::add);
+        studentList.forEach(student -> serviceStudent.del(student.getID()));
     }
 }
