@@ -5,7 +5,7 @@ import org.vvss.project.Domain.Teme;
 public class TemeValidator implements Validator<Teme> {
     @Override
     public String validate(Teme t) {
-        String m = new String();
+        String m;
         m = "";
         if (t.getID() == null || t.getID().equals("") || t.getID() < 1)
             m = m + "\nID invalid";
